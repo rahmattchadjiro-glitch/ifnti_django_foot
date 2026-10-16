@@ -15,7 +15,7 @@ def test_pas_equipe_avec_meme_nom(db):
 def test_afficher_equipe(db):
     equipe = Equipe.objects.create(nom="Equipe A", promo="L1")
     assert str(equipe) == "Equipe A"   
-    
+       
 def test_match_equipe_visiteuse_domicile(db):
     equipe1 = Equipe.objects.create(nom="Equipe A", promo="L1")
     equipe2 = Equipe.objects.create(nom="Equipe B", promo="L2")
@@ -29,3 +29,5 @@ def test_score_match_non_joue(db):
     equipe2 = Equipe.objects.create(nom="Equipe B", promo="L2")
     match = Match.objects.create(equipe_visiteuse=equipe2, equipe_domicile=equipe1,date="14/01/20", status="EN_ATTENTE")
     assert match.score is None
+
+    
