@@ -1,5 +1,5 @@
 import pytest
-#from tournoi.models import Match
+from tournoi.models import Match
 from tournoi.models import Equipe
 
 def test_equipe_un_nom_promo(db):
@@ -16,3 +16,10 @@ def test_afficher_equipe(db):
     equipe = Equipe.objects.create(nom="Equipe A", promo="L1")
     assert str(equipe) == "Equipe A"   
     
+def test_match_equipe_visiteuse_domicile(db):
+    equipe1 = Equipe.objects.create(nom="Equipe A", promo="L1")
+    equipe2 = Equipe.objects.create(nom="Equipe B", promo="L2")
+    match = Match.objects.create(equipe_visiteuse=equipe2, equipe_domicile=equipe1,date="14/01/20")
+    assert match.equipe_visiteuse == equipe2
+    assert match.equipe_domicile == equipe1
+    assert match.date
