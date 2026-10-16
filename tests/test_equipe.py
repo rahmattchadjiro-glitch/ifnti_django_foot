@@ -23,3 +23,9 @@ def test_match_equipe_visiteuse_domicile(db):
     assert match.equipe_visiteuse == equipe2
     assert match.equipe_domicile == equipe1
     assert match.date
+    
+def test_score_match_non_joue(db):
+    equipe1 = Equipe.objects.create(nom="Equipe A", promo="L1")
+    equipe2 = Equipe.objects.create(nom="Equipe B", promo="L2")
+    match = Match.objects.create(equipe_visiteuse=equipe2, equipe_domicile=equipe1,date="14/01/20", status="EN_ATTENTE")
+    assert match.score is None
