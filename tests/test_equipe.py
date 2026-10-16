@@ -1,5 +1,5 @@
 import pytest
-from tournoi.models import Match
+#from tournoi.models import Match
 from tournoi.models import Equipe
 
 def test_equipe_un_nom_promo(db):
