@@ -36,3 +36,9 @@ def test_afficher_match_non_joue(db):
     equipe2 = Equipe.objects.create(nom="Equipe B", promo="L2")
     match = Match.objects.create(equipe_visiteuse=equipe2, equipe_domicile=equipe1,date="14/01/20", status="EN_ATTENTE")
     assert str(match) == "Equipe A - Equipe B : à jouer"
+    
+def test_afficher_match_joue(db):
+      equipe1 = Equipe.objects.create(nom="Equipe A", promo="L1")
+      equipe2 = Equipe.objects.create(nom="Equipe B", promo="L2")
+      match = Match.objects.create(equipe_visiteuse=equipe2, equipe_domicile=equipe1,date="14/01/20", status="JOUE" ,score_visiteuse=1,score_domicile=3)
+      assert str(match) == "Equipe A  : 3-1 "    
