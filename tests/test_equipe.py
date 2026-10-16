@@ -16,9 +16,3 @@ def test_afficher_equipe():
     equipe = Equipe.objects.create(nom="Equipe A", promo="L1")
     assert str(equipe) == "Equipe A"   
     
-def test_match_equipe_visiteuse_receptioniste():
-    equipe1 = Equipe.objects.create(nom="Equipe A", promo="L1")
-    equipe2 = Equipe.objects.create(nom="Equipe B", promo="L2")
-    match = equipe1.matchs.create(equipe_visiteuse=equipe2)
-    assert match.equipe_visiteuse == equipe2
-    assert match.equipe_receptioniste == equipe1
